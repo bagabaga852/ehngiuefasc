@@ -1,1 +1,3545 @@
+local Players = game:GetService("Players")
+local LP = Players.LocalPlayer
+local StarterGui = game:GetService('StarterGui')
+for i=1, 15 do
+    local r = pcall(StarterGui["SetCore"])
+    if r then break end
+    game:GetService('RunService').RenderStepped:wait()
+end
+wait()
 
+local properties = {
+    Color = Color3.fromRGB(135, 206, 250);
+    Font = Enum.Font.SourceSansItalic;
+    TextSize = 40;
+}
+
+                  
+properties.Text = "腳本By.企鵝"
+StarterGui:SetCore("ChatMakeSystemMessage", properties)
+
+function translateFrom(message)
+    local translation = translate(message, YourLang)
+
+    local text
+    if translation.from.language ~= YourLang then 
+        text = translation.text
+    end
+
+    return {text, translation.from.language}
+end
+
+function get(plr, msg)
+    local tab = translateFrom(msg)
+    local translation = tab[1]
+    if translation then
+        properties.Text = "("..tab[2]:upper()..") ".."[".. plr.Name .."]: "..translation
+        StarterGui:SetCore("ChatMakeSystemMessage", properties)
+    end
+end
+
+game.ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(messageData) 
+    get(game:GetService("Players")[messageData.FromSpeaker],messageData.Message)
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+    
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "歡迎使用";
+    Text = "企鵝外掛腳本\nV38版本";
+    Icon = "rbxthumb://type=Asset&id=5082444247&w=150&h=150"
+})
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "請輸入密鑰";
+    Text = "腳本By.企鵝";
+    Icon = "rbxthumb://type=Asset&id=5060864302&w=150&h=150"
+})
+
+local PenguinKeyGUI = Instance.new("ScreenGui")
+local Penguinmain = Instance.new("Frame")
+local txte = Instance.new("TextLabel")
+local Enterkey = Instance.new("TextButton")
+local Enterkeyhere = Instance.new("TextBox")
+
+PenguinKeyGUI.Name = "PenguinKeyGUI"--Tutorial = PenguinKeyGUI
+PenguinKeyGUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+PenguinKeyGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Penguinmain.Name = "Penguinmain"--main = Penguinmain
+Penguinmain.Parent = PenguinKeyGUI
+Penguinmain.BackgroundColor3 = Color3.fromRGB(192, 192, 192)
+Penguinmain.Position = UDim2.new(0.450000000, 0, 0.10000000, 0)
+Penguinmain.Size = UDim2.new(0, 206, 0, 200)
+Penguinmain.Active = true
+Penguinmain.Draggable = true
+
+txte.Name = "txte"--txt = txte
+txte.Parent = Penguinmain
+txte.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+txte.Position = UDim2.new(0.0145631069, 0, 0.020000000, 0)
+txte.Size = UDim2.new(0, 200, 0, 62)
+txte.Font = Enum.Font.GothamBold
+txte.Text = "腳本By.企鵝 V38"
+txte.TextWrapped = true
+txte.TextScaled = true
+txte.TextColor3 = Color3.fromRGB(0, 0, 0)
+txte.TextSize = 32.000
+
+Enterkey.Name = "Enterkey"--Submit = Enterkey
+Enterkey.Parent = Penguinmain
+Enterkey.BackgroundColor3 = Color3.fromRGB(178, 34, 34)
+Enterkey.Position = UDim2.new(0.0145631069, 0, 0.730000000, 0)
+Enterkey.Size = UDim2.new(0, 200, 0, 50)
+Enterkey.Font = Enum.Font.GothamBold
+Enterkey.Text = "輸入密鑰"
+Enterkey.TextWrapped = true
+Enterkey.TextColor3 = Color3.fromRGB(255, 255, 255)
+Enterkey.TextSize = 45.000
+Enterkey.MouseButton1Down:Connect(function()
+    if Enterkeyhere.Text == "WASD" then
+        Penguinmain.Visible = false
+ScreenGui:Destroy()
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "企鵝外掛腳本";
+    Text = "腳本By.企鵝";
+    Icon = "rbxthumb://type=Asset&id=742226843&w=150&h=150"
+})
+
+local fps = 500
+if setfpscap then
+      setfpscap(fps)
+end
+
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+
+
+
+Notification:Notify(
+    {Title = "腳本開啟成功..", Description = "歡迎使用企鵝外掛腳本 V38"},
+    {OutlineColor = Color3.fromRGB(76, 0, 130),Time = 2, Type = "default"}
+)
+
+
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/PenUI2/main/Goodwdasdw", true))()
+
+local Library = DarkraiX:Window("企鵝腳本外掛","","",Enum.KeyCode.LeftAlt);
+
+Main = Library:Tab("腳本說明")
+
+Main:Seperator("企鵝 Roblox 腳本外掛 x King Legacy [V38]")
+
+Main:Label("Key=WASD")
+Main:Label("此腳本會持續更新")
+Main:Label("腳本更新日期:2023/06/06")
+Main:Label("腳本Made By.企鵝")
+Main:Button("Play Sound", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+end)
+Main:Button("Bug回報\nDiscord:企鵝#0931", function()
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title = "Discord";
+        Text = "企鵝#0931";
+        Icon = "rbxthumb://type=Asset&id=7202182439&w=150&h=150"
+    })
+end)
+
+
+
+
+
+
+OPSC = Library:Tab("公告&更新內容")
+OPSC:Seperator("公告")
+
+OPSC:Label("無公告內容", function()
+end)
+
+
+OPSC:Seperator("更新內容")
+
+OPSC:Button("版本 38 更新", function()
+end)
+OPSC:Button("修復腳本在King Legacy中許多功能無法顯示的問題", function()
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PL = Library:Tab("玩家選單")
+PL:Seperator("玩家選單")
+
+
+PL:Button("Bug回報\nDiscord:企鵝#0931", function()
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title = "Discord";
+        Text = "企鵝#0931";
+        Icon = "rbxthumb://type=Asset&id=7202182439&w=150&h=150"
+    })
+end)
+
+
+PL:Seperator("模式(切換)")
+
+PL:Toggle("自動開啟武裝色(Auto Armament Haki)", {Toggled = true, Description = "Haki"}, function(value)
+    _G.AUTOHAKI = value
+end)
+
+spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AUTOHAKI then
+    if game.Players.LocalPlayer.Character.Haki.Value == 0 then
+        game.Players.LocalPlayer.Character.Haki.Value = 1
+        game:GetService("Players").LocalPlayer.Character.Services.Client.Armament:FireServer()
+                 end
+            end
+                end)
+                end)
+    end)
+
+    PL:Toggle("自動開啟見聞色(Auto Observation Haki)",  nil, function(a)
+        _G.KenHaki = a
+    end)
+
+task.spawn(function()
+    while task.wait() do
+        if _G.KenHaki then
+        pcall(function()
+        KenHaki()
+        end)
+    end
+end
+end)
+
+function KenHaki()
+    local pl = game.Players.LocalPlayer.Character
+  if pl.KenOpen.Value == false then
+    game:service('VirtualInputManager'):SendKeyEvent(true, "Y", false, game)
+    game:service('VirtualInputManager'):SendKeyEvent(true, "Y", false, game)
+    end
+end
+
+
+PL:Toggle("視野清晰(No Fog)", "視野清晰No Fog", function(state)
+    if state then
+        getgenv().toggle = true
+        while getgenv().toggle == true and wait() do
+            game:GetService("Lighting").Brightness = 1
+            game:GetService("Lighting").FogEnd = 100000
+            game:GetService("Lighting").GlobalShadows = true
+            game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+        end
+    else
+        getgenv().toggle = false
+        while getgenv().toggle == true and wait() do
+        game:GetService("Lighting").Brightness = 1
+        game:GetService("Lighting").FogEnd = 2500
+        game:GetService("Lighting").GlobalShadows = true
+        game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+        end
+    end
+    end)
+
+    PL:Toggle("King Legacy吸果(Bring Fruit)",_G.BringFruit,function(value)
+        _G.BringFruit = value
+    end)
+    
+    spawn(function()
+        while wait() do
+            if _G.BringFruit then
+                pcall(function()
+                    for i,v in pairs(game.Workspace:GetChildren()) do
+                        if v:IsA("Tool") then
+                            v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        end
+                    end	
+                end)
+            end
+        end
+    end)
+
+    PL:Seperator("模式(滑塊)")
+
+    PL:Slider("偵率(FPS)",1,360,60, function(s)
+        local fps = s
+        if setfpscap then
+              setfpscap(fps)
+        end
+    end)
+    PL:Slider("移動速度(Walk Speed)",1,1000,16,function(s)
+        local walkspeedplayer = game:GetService("Players").LocalPlayer
+        local walkspeedmouse = walkspeedplayer:GetMouse()
+        
+        local walkspeedenabled = false
+        
+        if walkspeedenabled == false then
+        _G.WS = s;
+        local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+        Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+        Humanoid.WalkSpeed = _G.WS;
+        end)
+        Humanoid.WalkSpeed = _G.WS;
+        
+        walkspeedenabled = true
+        end
+    end)
+    PL:Slider("跳躍高度(Jump Power)",1,1000,50, function(s)
+        local jumppowerplayer = game:GetService("Players").LocalPlayer
+            local jumppowermouse = jumppowerplayer:GetMouse()
+            
+            local jumppowerenabled = false
+            
+            if jumppowerenabled == false then
+            _G.JP = s;
+            local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+            Humanoid:GetPropertyChangedSignal("JumpPower"):Connect(function()
+            Humanoid.JumpPower = _G.JP;
+            end)
+            Humanoid.JumpPower = _G.JP;
+            
+            jumppowerenabled = true
+            end
+    end)
+    PL:Slider("角色重力(Gravity)",1,196.2,196.2, function(s)
+        game.Workspace.Gravity = s
+        GravityOFF.Visible = true
+        GravityON.Visible = true
+    end)
+
+
+
+
+    PL:Seperator("模式(按鈕)")
+
+    PL:Button("獲得指南針(Get Free Legacy Pose)",function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+        local a=Instance.new("Tool",game:GetService("Players").LocalPlayer.Backpack);
+        a.Name="LegacyPose";
+        a.TextureId="rbxassetid://6886064327";
+        local PL=Instance.new("MeshPart",a);
+        PL.Name="Handle";PL.MeshId="rbxassetid://6867982510";
+    end)
+    
+    task.spawn(function()
+        while true do wait(1);
+            pcall(function()
+                local a;for kv,Jv in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren())do 
+                    if Jv.Name=="LegacyPose"and not Jv:FindFirstChild("DevilFruit")then 
+                        a=Jv;
+                    end;
+                end;
+                for gf,Of in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren())do 
+                    if Of.Name=="LegacyPose"and not Of:FindFirstChild("DevilFruit")then 
+                        a=Of;
+                    end;
+                end;
+                if a~=nil then 
+                    local pu=game:GetService("Players").LocalPlayer;
+                    local Tu=pu.Character;
+                    local Au=nil;
+                    local Xu=Tu:WaitForChild("HumanoidRootPart");
+                    local Eu=Tu:WaitForChild("Humanoid");
+                    local Iu=game:GetService("RunService");
+                    if not a:FindFirstChild("DevilFruit")then 
+                        local qp=Instance.new("IntValue",a);
+                        qp.Name="DevilFruit";
+                        a.Equipped:Connect(function()Au=true;
+                            local gd=nil;
+                            local Ud=nil;
+                            while true do 
+                                local Zq=workspace.Areas:FindFirstChild("LegacyIslandArea");
+                                if Zq then 
+                                    if not gd then gd=game.ReplicatedStorage.Chest.Etc.Arrow:Clone();
+                                        gd.Parent=workspace.Effects;
+                                    end;
+                                    gd.CFrame=CFrame.new(Xu.Position,Xu.Position+(Zq.Position-Xu.Position).Unit*Vector3.new(1,0,1))*CFrame.new(0,0,-3);
+                                    gd.Transparency=math.abs(math.sin(tick()*1))*0.5;
+                                end;
+                                local mq=workspace:FindFirstChild("GhostMonster");
+                                if mq then local Cq=mq:FindFirstChild("Ghost Ship");
+                                    if Cq then 
+                                        if not Ud then 
+                                        Ud=game.ReplicatedStorage.Chest.Etc.Arrow:Clone();
+                                        Ud.Color=Color3.fromRGB(148,190,129);
+                                        Ud.Parent=workspace.Effects;
+                                    end;
+                                    Ud.CFrame=CFrame.new(Xu.Position,Xu.Position+(Cq.Hitbox.Position-Xu.Position).Unit*Vector3.new(1,0,1))*CFrame.new(0,0,-3);
+                                    Ud.Transparency=math.abs(math.sin(tick()*1))*0.5;
+                                end;
+                            end;
+                            if Eu.Health<=0 then 
+                                break;
+                            end;
+                            if not Au then 
+                                break;
+                            end;
+                            Iu.Heartbeat:Wait();
+                        end;
+                        if gd then 
+                            gd:Destroy();
+                        end;
+                        if Ud then 
+                            Ud:Destroy();
+                        end;
+                    end);
+                    a.Unequipped:Connect(function()Au=nil;
+                    end);
+                end;
+            end;
+        end);
+    end;
+    end);
+
+    PL:Button("使用遊戲中所有代碼(Redeem all codes)",function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("Peodiz")
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("DinoxLive")
+    
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("2023")
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("2BVisits")
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("1MLikes")
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("Thx4Waiting")
+    game:GetService("ReplicatedStorage").Remotes.Functions.redeemcode:InvokeServer("Update4.6YAY")
+    end)
+
+    PL:Button("世界加速(World Faster)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+        local x = nill
+        x = hookfunction(wait,function() return x(0) end)
+        end)
+
+    PL:Button("旁觀者模式(Spectator Mode)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title = "旁觀者模式";
+        Text = "By.企鵝";
+        Icon = "rbxthumb://type=Asset&id=9818809996&w=150&h=150"
+    })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/bystander/main/bystanderer"))()
+end)
+
+PL:Button("掛機防踢(Anti AFK)", function()
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title = "掛機防踢";
+        Text = "Anti AFK";
+        Icon = "rbxthumb://type=Asset&id=68008947&w=150&h=150"
+    })
+    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
+        v:Disable()
+    end
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+end)
+
+PL:Button("偵率提升(畫質降低)FPS Booster(Reduced Quality)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+    local decalsyeeted = true
+    local g = game
+    local w = g.Workspace
+    local l = g.Lighting
+    local t = w.Terrain
+    sethiddenproperty(l,"Technology",2)
+    sethiddenproperty(t,"Decoration",false)
+    t.WaterWaveSize = 0
+    t.WaterWaveSpeed = 0
+    t.WaterReflectance = 0
+    t.WaterTransparency = 0
+    l.GlobalShadows = false
+    l.FogEnd = 9e9
+    l.Brightness = 0
+    settings().Rendering.QualityLevel = "Level01"
+    for i, v in pairs(g:GetDescendants()) do
+        if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+        elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+            v.Transparency = 1
+        elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+            v.Lifetime = NumberRange.new(0)
+        elseif v:IsA("Explosion") then
+            v.BlastPressure = 1
+            v.BlastRadius = 1
+        elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+            v.Enabled = false
+        elseif v:IsA("MeshPart") then
+            v.Material = "Plastic"
+            v.Reflectance = 0
+            v.TextureID = 10385902758728957
+        end
+    end
+    for i, e in pairs(l:GetChildren()) do
+        if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+            e.Enabled = false
+        end
+    end
+end)
+
+        PL:Button("[新]超級飛行外掛V3.5(New Fly Hack)", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                Sound.SoundId = "rbxassetid://9125530803"
+                Sound:Play()
+                local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                        Sound.SoundId = "rbxassetid://9125530803"
+                        Sound:Play()
+                        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                        Sound.SoundId = "rbxassetid://9125530803"
+                        Sound:Play()
+                        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                        Sound.SoundId = "rbxassetid://9125530803"
+                        Sound:Play()
+                        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                        Sound.SoundId = "rbxassetid://9125530803"
+                        Sound:Play()
+                game:GetService("StarterGui"):SetCore("SendNotification",{
+                    Title = "超級飛行外掛V3.5";
+                    Text = "By.企鵝";
+                    Icon = "rbxthumb://type=Asset&id=8763582733&w=150&h=150"
+                })
+                
+        local main = Instance.new("ScreenGui")
+        local Frame = Instance.new("Frame")
+        local up = Instance.new("TextButton")
+        local down = Instance.new("TextButton")
+        local onof = Instance.new("TextButton")
+        local TextLabel = Instance.new("TextLabel")
+        local plus = Instance.new("TextButton")
+        local speed = Instance.new("TextLabel")
+        local mine = Instance.new("TextButton")
+        local closebutton = Instance.new("TextButton")
+        local mini = Instance.new("TextButton")
+        local mini2 = Instance.new("TextButton")
+        
+        main.Name = "main"
+        main.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+        main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        main.ResetOnSpawn = false
+        
+        Frame.Parent = main
+        Frame.BackgroundColor3 = Color3.fromRGB(163, 255, 137)
+        Frame.BorderColor3 = Color3.fromRGB(192, 192, 192)
+        Frame.Position = UDim2.new(0.300320168, 0, 0.479746825, 0)
+        Frame.Size = UDim2.new(0, 190, 0, 57)
+        
+        up.Name = "up"
+        up.Parent = Frame
+        up.BackgroundColor3 = Color3.fromRGB(72, 209, 204)
+        up.Size = UDim2.new(0, 44, 0, 28)
+        up.Font = Enum.Font.SourceSans
+        up.Text = "上"
+        up.TextColor3 = Color3.fromRGB(0, 0, 0)
+        up.TextSize = 14.000
+        
+        down.Name = "down"
+        down.Parent = Frame
+        down.BackgroundColor3 = Color3.fromRGB(72, 209, 204)
+        down.Position = UDim2.new(0, 0, 0.491228074, 0)
+        down.Size = UDim2.new(0, 44, 0, 28)
+        down.Font = Enum.Font.SourceSans
+        down.Text = "下"
+        down.TextColor3 = Color3.fromRGB(0, 0, 0)
+        down.TextSize = 14.000
+        
+        onof.Name = "onof"
+        onof.Parent = Frame
+        onof.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+        onof.Position = UDim2.new(0.702823281, 0, 0.491228074, 0)
+        onof.Size = UDim2.new(0, 56, 0, 28)
+        onof.Font = Enum.Font.SourceSans
+        onof.Text = "起飛/降落"
+        onof.TextColor3 = Color3.fromRGB(0, 0, 0)
+        onof.TextSize = 17.000
+        
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
+        TextLabel.Position = UDim2.new(0.469327301, 0, 0, 0)
+        TextLabel.Size = UDim2.new(0, 100, 0, 28)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = "超級飛行外掛V3.5\nBy.企鵝"
+        TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.TextScaled = true
+        TextLabel.TextSize = 14.000
+        TextLabel.TextWrapped = true
+        
+        plus.Name = "plus"
+        plus.Parent = Frame
+        plus.BackgroundColor3 = Color3.fromRGB(0, 250, 154)
+        plus.Position = UDim2.new(0.231578946, 0, 0, 0)
+        plus.Size = UDim2.new(0, 45, 0, 28)
+        plus.Font = Enum.Font.SourceSans
+        plus.Text = "+5速度"
+        plus.TextColor3 = Color3.fromRGB(0, 0, 0)
+        plus.TextScaled = true
+        plus.TextSize = 14.000
+        plus.TextWrapped = true
+        
+        speed.Name = "speed"
+        speed.Parent = Frame
+        speed.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        speed.Position = UDim2.new(0.468421042, 0, 0.491228074, 0)
+        speed.Size = UDim2.new(0, 44, 0, 28)
+        speed.Font = Enum.Font.SourceSans
+        speed.Text = "1"
+        speed.TextColor3 = Color3.fromRGB(255, 255, 255)
+        speed.TextScaled = true
+        speed.TextSize = 14.000
+        speed.TextWrapped = true
+        
+        mine.Name = "mine"
+        mine.Parent = Frame
+        mine.BackgroundColor3 = Color3.fromRGB(0, 250, 154)
+        mine.Position = UDim2.new(0.231578946, 0, 0.491228074, 0)
+        mine.Size = UDim2.new(0, 45, 0, 29)
+        mine.Font = Enum.Font.SourceSans
+        mine.Text = "-1速度"
+        mine.TextColor3 = Color3.fromRGB(0, 0, 0)
+        mine.TextScaled = true
+        mine.TextSize = 14.000
+        mine.TextWrapped = true
+        
+        closebutton.Name = "Close"
+        closebutton.Parent = main.Frame
+        closebutton.BackgroundColor3 = Color3.fromRGB(225, 25, 0)
+        closebutton.Font = "SourceSans"
+        closebutton.Size = UDim2.new(0, 45, 0, 28)
+        closebutton.Text = "關閉"
+        closebutton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        closebutton.TextScaled = true
+        closebutton.TextSize = 30
+        closebutton.Position =  UDim2.new(0, 0, -1, 27)
+        
+        mini.Name = "minimize"
+        mini.Parent = main.Frame
+        mini.BackgroundColor3 = Color3.fromRGB(0, 0, 128)
+        mini.Font = "SourceSans"
+        mini.Size = UDim2.new(0, 45, 0, 28)
+        mini.TextColor3 = Color3.fromRGB(255, 255, 255)
+        mini.TextScaled = true
+        mini.Text = "隱藏"
+        mini.TextSize = 20
+        mini.Position = UDim2.new(0, 44, -1, 27)
+        
+        mini2.Name = "minimize2"
+        mini2.Parent = main.Frame
+        mini2.BackgroundColor3 = Color3.fromRGB(0, 0, 128)
+        mini2.Font = "SourceSans"
+        mini2.Size = UDim2.new(0, 45, 0, 28)
+        mini2.Text = "開啟"
+        mini2.TextColor3 = Color3.fromRGB(255, 255, 255)
+        mini2.TextScaled = true
+        mini2.TextSize = 20
+        mini2.Position = UDim2.new(0, 44, -1, 57)
+        mini2.Visible = false
+        
+        speeds = 1
+        
+        local speaker = game:GetService("Players").LocalPlayer
+        
+        local chr = game.Players.LocalPlayer.Character
+        local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+        
+        nowe = false
+        
+        Frame.Active = true -- main = gui
+        Frame.Draggable = true
+        
+        onof.MouseButton1Down:connect(function()
+        
+            if nowe == true then
+                nowe = false
+        
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,true)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,true)
+                speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+            else 
+                nowe = true
+        
+        
+        
+                for i = 1, speeds do
+                    spawn(function()
+        
+                        local hb = game:GetService("RunService").Heartbeat	
+        
+        
+                        tpwalking = true
+                        local chr = game.Players.LocalPlayer.Character
+                        local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                        while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                            if hum.MoveDirection.Magnitude > 0 then
+                                chr:TranslateBy(hum.MoveDirection)
+                            end
+                        end
+        
+                    end)
+                end
+                game.Players.LocalPlayer.Character.Animate.Disabled = true
+                local Char = game.Players.LocalPlayer.Character
+                local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
+        
+                for i,v in next, Hum:GetPlayingAnimationTracks() do
+                    v:AdjustSpeed(0)
+                end
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,false)
+                speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
+                speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+            end
+        
+        
+        
+        
+            if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RigType == Enum.HumanoidRigType.R6 then
+        
+        
+        
+                local plr = game.Players.LocalPlayer
+                local torso = plr.Character.Torso
+                local flying = true
+                local deb = true
+                local ctrl = {f = 0, b = 0, l = 0, r = 0}
+                local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+                local maxspeed = 50
+                local speed = 0
+        
+        
+                local bg = Instance.new("BodyGyro", torso)
+                bg.P = 9e4
+                bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+                bg.cframe = torso.CFrame
+                local bv = Instance.new("BodyVelocity", torso)
+                bv.velocity = Vector3.new(0,0.1,0)
+                bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+                if nowe == true then
+                    plr.Character.Humanoid.PlatformStand = true
+                end
+                while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+                    game:GetService("RunService").RenderStepped:Wait()
+        
+                    if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+                        speed = speed+.5+(speed/maxspeed)
+                        if speed > maxspeed then
+                            speed = maxspeed
+                        end
+                    elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+                        speed = speed-1
+                        if speed < 0 then
+                            speed = 0
+                        end
+                    end
+                    if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                        lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+                    elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                    else
+                        bv.velocity = Vector3.new(0,0,0)
+                    end
+                    
+                    bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+                end
+                ctrl = {f = 0, b = 0, l = 0, r = 0}
+                lastctrl = {f = 0, b = 0, l = 0, r = 0}
+                speed = 0
+                bg:Destroy()
+                bv:Destroy()
+                plr.Character.Humanoid.PlatformStand = false
+                game.Players.LocalPlayer.Character.Animate.Disabled = false
+                tpwalking = false
+        
+        
+        
+        
+            else
+                local plr = game.Players.LocalPlayer
+                local UpperTorso = plr.Character.UpperTorso
+                local flying = true
+                local deb = true
+                local ctrl = {f = 0, b = 0, l = 0, r = 0}
+                local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+                local maxspeed = 50
+                local speed = 0
+        
+        
+                local bg = Instance.new("BodyGyro", UpperTorso)
+                bg.P = 9e4
+                bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+                bg.cframe = UpperTorso.CFrame
+                local bv = Instance.new("BodyVelocity", UpperTorso)
+                bv.velocity = Vector3.new(0,0.1,0)
+                bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+                if nowe == true then
+                    plr.Character.Humanoid.PlatformStand = true
+                end
+                while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+                    wait()
+        
+                    if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+                        speed = speed+.5+(speed/maxspeed)
+                        if speed > maxspeed then
+                            speed = maxspeed
+                        end
+                    elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+                        speed = speed-1
+                        if speed < 0 then
+                            speed = 0
+                        end
+                    end
+                    if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                        lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+                    elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+                        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                    else
+                        bv.velocity = Vector3.new(0,0,0)
+                    end
+        
+                    bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+                end
+                ctrl = {f = 0, b = 0, l = 0, r = 0}
+                lastctrl = {f = 0, b = 0, l = 0, r = 0}
+                speed = 0
+                bg:Destroy()
+                bv:Destroy()
+                plr.Character.Humanoid.PlatformStand = false
+                game.Players.LocalPlayer.Character.Animate.Disabled = false
+                tpwalking = false
+        
+        
+        
+            end
+        
+        
+        
+        
+        
+        end)
+        
+        local tis
+        
+        up.MouseButton1Down:connect(function()
+            tis = up.MouseEnter:connect(function()
+                while tis do
+                    wait()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+                end
+            end)
+        end)
+        
+        up.MouseLeave:connect(function()
+            if tis then
+                tis:Disconnect()
+                tis = nil
+            end
+        end)
+        
+        local dis
+        
+        up.MouseButton1Down:connect(function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+            
+        end)
+        
+        down.MouseButton1Down:connect(function()
+                    
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-2,0)
+        
+        end)
+        
+        
+        game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function(char)
+            wait(0.7)
+            game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+            game.Players.LocalPlayer.Character.Animate.Disabled = false
+        
+        end)
+        
+        
+        plus.MouseButton1Down:connect(function()
+            speeds = speeds + 5
+            speed.Text = speeds
+            if nowe == true then
+        
+        
+                tpwalking = false
+                for i = 1, speeds do
+                    spawn(function()
+        
+                        local hb = game:GetService("RunService").Heartbeat	
+        
+        
+                        tpwalking = true
+                        local chr = game.Players.LocalPlayer.Character
+                        local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                        while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                            if hum.MoveDirection.Magnitude > 0 then
+                                chr:TranslateBy(hum.MoveDirection)
+                            end
+                        end
+        
+                    end)
+                end
+            end
+        end)
+        mine.MouseButton1Down:connect(function()
+            if speeds == 1 then
+                speed.Text = '請勿輸入小於1的數字'
+                wait(1)
+                speed.Text = speeds
+            else
+                speeds = speeds - 1
+                speed.Text = speeds
+                if nowe == true then
+                    tpwalking = false
+                    for i = 1, speeds do
+                        spawn(function()
+        
+                            local hb = game:GetService("RunService").Heartbeat	
+        
+        
+                            tpwalking = true
+                            local chr = game.Players.LocalPlayer.Character
+                            local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                            while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                                if hum.MoveDirection.Magnitude > 0 then
+                                    chr:TranslateBy(hum.MoveDirection)
+                                end
+                            end
+        
+                        end)
+                    end
+                end
+            end
+        end)
+        
+        closebutton.MouseButton1Click:Connect(function()
+            main:Destroy()
+        end)
+        
+        mini.MouseButton1Click:Connect(function()
+            up.Visible = false
+            down.Visible = false
+            onof.Visible = false
+            plus.Visible = false
+            speed.Visible = false
+            mine.Visible = false
+            mini.Visible = false
+            mini2.Visible = true
+            main.Frame.BackgroundTransparency = 1
+            closebutton.Position =  UDim2.new(0, 0, -1, 57)
+        end)
+        
+        mini2.MouseButton1Click:Connect(function()
+            up.Visible = true
+            down.Visible = true
+            onof.Visible = true
+            plus.Visible = true
+            speed.Visible = true
+            mine.Visible = true
+            mini.Visible = true
+            mini2.Visible = false
+            main.Frame.BackgroundTransparency = 0 
+            closebutton.Position =  UDim2.new(0, 0, -1, 27)
+        end)
+                end)
+
+                PL:Button("[舊]超級飛行外掛V2.2(Old Fly Hack)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+    
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "超級飛行外掛";
+            Text = "By.企鵝";
+            Icon = "rbxthumb://type=Asset&id=8763582733&w=150&h=150"
+        })
+        
+        
+            local main = Instance.new("ScreenGui")
+            local Frame = Instance.new("Frame")
+            local up = Instance.new("TextButton")
+            local down = Instance.new("TextButton")
+            local onof = Instance.new("TextButton")
+            local TextLabel = Instance.new("TextLabel")
+            local plus = Instance.new("TextButton")
+            local speed = Instance.new("TextLabel")
+            local mine = Instance.new("TextButton")
+            
+            
+            
+            main.Name = "main"
+            main.Parent = game.CoreGui
+            main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            
+            Frame.Parent = main
+            Frame.BackgroundColor3 = Color3.fromRGB(211,211,211)
+            Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Frame.Position = UDim2.new(0.100320168, 0, 0.379746825, 0)
+            Frame.Size = UDim2.new(0, 500, 0, 200)
+            
+            up.Name = "up"
+            up.Parent = Frame
+            up.BackgroundColor3 = Color3.fromRGB(255,0,0)
+            up.Size = UDim2.new(0, 60, 0, 60)
+            up.Font = Enum.Font.SourceSans
+            up.Text = "上"
+            up.TextColor3 = Color3.fromRGB(255, 255, 255)
+            up.TextSize = 60.000
+            
+            down.Name = "down"
+            down.Parent = Frame
+            down.BackgroundColor3 = Color3.fromRGB(255,0,0)
+            down.Position = UDim2.new(0, 0, 0.491228074, 0)
+            down.Size = UDim2.new(0, 60, 0, 60)
+            down.Font = Enum.Font.SourceSans
+            down.Text = "下"
+            down.TextColor3 = Color3.fromRGB(255, 255, 255)
+            down.TextSize = 60.000
+            
+            onof.Name = "onof"
+            onof.Parent = Frame
+            onof.BackgroundColor3 = Color3.fromRGB(139,0,0)
+            onof.Position = UDim2.new(0.702823281, 0, 0.491228074, 0)
+            onof.Size = UDim2.new(0, 140, 0, 80)
+            onof.Font = Enum.Font.SourceSans
+            onof.Text = "起飛/降落"
+            onof.TextColor3 = Color3.fromRGB(255, 255, 255)
+            onof.TextSize = 45.000
+            
+            TextLabel.Parent = Frame
+            TextLabel.BackgroundColor3 = Color3.fromRGB(47, 79, 79)
+            TextLabel.Position = UDim2.new(0.469327301, 0, 0, 0)
+            TextLabel.Size = UDim2.new(0, 200, 0, 50)
+            TextLabel.Font = Enum.Font.SourceSans
+            TextLabel.Text = "超級飛行(By.企鵝)V2.2"
+            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextLabel.TextScaled = true
+            TextLabel.TextSize = 14.000
+            TextLabel.TextWrapped = true
+            
+            plus.Name = "plus"
+            plus.Parent = Frame
+            plus.BackgroundColor3 = Color3.fromRGB(0,0,255)
+            plus.Position = UDim2.new(0.231578946, 0, 0, 0)
+            plus.Size = UDim2.new(0, 80, 0, 80)
+            plus.Font = Enum.Font.SourceSans
+            plus.Text = "增加5速度"
+            plus.TextColor3 = Color3.fromRGB(255, 255, 255)
+            plus.TextScaled = true
+            plus.TextSize = 30.000
+            plus.TextWrapped = true
+            
+            speed.Name = "speed"
+            speed.Parent = Frame
+            speed.BackgroundColor3 = Color3.fromRGB(0,0,0)
+            speed.Position = UDim2.new(0.468421042, 0, 0.491228074, 0)
+            speed.Size = UDim2.new(0, 80, 0, 80)
+            speed.Font = Enum.Font.SourceSans
+            speed.Text = "1"
+            speed.TextColor3 = Color3.fromRGB(255, 255, 255)
+            speed.TextScaled = true
+            speed.TextSize = 50.000
+            speed.TextWrapped = true
+            
+            mine.Name = "mine"
+            mine.Parent = Frame
+            mine.BackgroundColor3 = Color3.fromRGB(0,0,255)
+            mine.Position = UDim2.new(0.231578946, 0, 0.491228074, 0)
+            mine.Size = UDim2.new(0, 80, 0, 80)
+            mine.Font = Enum.Font.SourceSans
+            mine.Text = "減少1速度"
+            mine.TextColor3 = Color3.fromRGB(255, 255, 255)
+            mine.TextScaled = true
+            mine.TextSize = 30.000
+            mine.TextWrapped = true
+            
+            speeds = 1
+            
+            local speaker = game:GetService("Players").LocalPlayer
+            
+            local chr = game.Players.LocalPlayer.Character
+            local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+            
+            nowe = false
+            
+            Frame.Active = true -- main = gui
+            Frame.Draggable = true
+            
+            onof.MouseButton1Down:connect(function()
+            
+                if nowe == true then
+                    nowe = false
+            
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,true)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,true)
+                    speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+                else 
+                    nowe = true
+            
+            
+            
+                    for i = 1, speeds do
+                        spawn(function()
+            
+                            local hb = game:GetService("RunService").Heartbeat	
+            
+            
+                            tpwalking = true
+                            local chr = game.Players.LocalPlayer.Character
+                            local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                            while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                                if hum.MoveDirection.Magnitude > 0 then
+                                    chr:TranslateBy(hum.MoveDirection)
+                                end
+                            end
+            
+                        end)
+                    end
+                    game.Players.LocalPlayer.Character.Animate.Disabled = true
+                    local Char = game.Players.LocalPlayer.Character
+                    local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
+            
+                    for i,v in next, Hum:GetPlayingAnimationTracks() do
+                        v:AdjustSpeed(0)
+                    end
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,false)
+                    speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
+                    speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+                end
+            
+            
+            
+            
+                
+                    local plr = game.Players.LocalPlayer
+                    local UpperTorso = plr.Character.LowerTorso
+                    local flying = true
+                    local deb = true
+                    local ctrl = {f = 0, b = 0, l = 0, r = 0}
+                    local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+                    local maxspeed = 50
+                    local speed = 0
+            
+            
+                    local bg = Instance.new("BodyGyro", UpperTorso)
+                    bg.P = 9e4
+                    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+                    bg.cframe = UpperTorso.CFrame
+                    local bv = Instance.new("BodyVelocity", UpperTorso)
+                    bv.velocity = Vector3.new(0,0.1,0)
+                    bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+                    if nowe == true then
+                        plr.Character.Humanoid.PlatformStand = true
+                    end
+                    while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
+                        wait()
+            
+                        if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+                            speed = speed+.5+(speed/maxspeed)
+                            if speed > maxspeed then
+                                speed = maxspeed
+                            end
+                        elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+                            speed = speed-1
+                            if speed < 0 then
+                                speed = 0
+                            end
+                        end
+                        if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                            lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+                        elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+                            bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+                        else
+                            bv.velocity = Vector3.new(0,0,0)
+                        end
+            
+                        bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+                    end
+                    ctrl = {f = 0, b = 0, l = 0, r = 0}
+                    lastctrl = {f = 0, b = 0, l = 0, r = 0}
+                    speed = 0
+                    bg:Destroy()
+                    bv:Destroy()
+                    plr.Character.Humanoid.PlatformStand = false
+                    game.Players.LocalPlayer.Character.Animate.Disabled = false
+                    tpwalking = false
+            
+            
+            
+                
+            
+            
+            
+            
+            
+            end)
+            
+            
+            up.MouseButton1Down:connect(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+                
+            end)
+            
+            
+            down.MouseButton1Down:connect(function()
+            
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+            
+            end)
+            
+            
+            game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function(char)
+                wait(0.7)
+                game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+                game.Players.LocalPlayer.Character.Animate.Disabled = false
+            
+            end)
+            
+            
+            plus.MouseButton1Down:connect(function()
+                speeds = speeds + 5
+                speed.Text = speeds
+                if nowe == true then
+                    
+            
+                tpwalking = false
+                for i = 1, speeds do
+                    spawn(function()
+            
+                        local hb = game:GetService("RunService").Heartbeat	
+            
+            
+                        tpwalking = true
+                        local chr = game.Players.LocalPlayer.Character
+                        local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                        while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                            if hum.MoveDirection.Magnitude > 0 then
+                                chr:TranslateBy(hum.MoveDirection)
+                            end
+                        end
+            
+                    end)
+                    end
+                    end
+            end)
+            mine.MouseButton1Down:connect(function()
+                if speeds == 1 then
+                    speed.Text = '不可輸入小於1的數字'
+                    wait(2)
+                    speed.Text = speeds
+                else
+                speeds = speeds - 1
+                    speed.Text = speeds
+                    if nowe == true then
+                tpwalking = false
+                for i = 1, speeds do
+                    spawn(function()
+            
+                        local hb = game:GetService("RunService").Heartbeat	
+            
+            
+                        tpwalking = true
+                        local chr = game.Players.LocalPlayer.Character
+                        local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+                        while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+                            if hum.MoveDirection.Magnitude > 0 then
+                                chr:TranslateBy(hum.MoveDirection)
+                            end
+                        end
+            
+                    end)
+                    end
+                    end
+                    end
+            end)
+    end)
+
+PL:Button("跳躍飛行(Jump & Fly)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        game:GetService("UserInputService").JumpRequest:connect(function()
+        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping") 
+        end)
+    end)
+
+    PL:Button("傳送道具(Teleport item)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/tpitem/main/tpitem"))()
+    end)
+
+    PL:Button("監視玩家外掛V2.0(View Player)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/vview/main/vview"))()
+end)
+
+PL:Button("玩家透視(ESP)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local Holder = Instance.new("Folder", game.CoreGui)
+Holder.Name = "ESP"
+
+local Box = Instance.new("BoxHandleAdornment")
+Box.Name = "nilBox"
+Box.Size = Vector3.new(4, 7, 4)
+Box.Color3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Box.Transparency = 100
+Box.ZIndex = 0
+Box.AlwaysOnTop = true
+Box.Visible = true
+
+local NameTag = Instance.new("BillboardGui")
+NameTag.Name = "nilNameTag"
+NameTag.Enabled = false
+NameTag.Size = UDim2.new(0, 200, 0, 50)
+NameTag.AlwaysOnTop = true
+NameTag.StudsOffset = Vector3.new(0, 1.8, 0)
+local Tag = Instance.new("TextLabel", NameTag)
+Tag.Name = "Tag"
+Tag.BackgroundTransparency = 1
+Tag.Position = UDim2.new(0, -50, 0, 0)
+Tag.Size = UDim2.new(0, 300, 0, 20)
+Tag.TextSize = 20
+Tag.TextColor3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Tag.TextStrokeColor3 = Color3.new(0 / 255, 0 / 255, 0 / 255)
+Tag.TextStrokeTransparency = 0.4
+Tag.Text = "nil"
+Tag.Font = Enum.Font.SourceSansBold
+Tag.TextScaled = false
+
+local LoadCharacter = function(v)
+repeat wait() until v.Character ~= nil
+v.Character:WaitForChild("Humanoid")
+local vHolder = Holder:FindFirstChild(v.Name)
+vHolder:ClearAllChildren()
+local b = Box:Clone()
+b.Name = v.Name .. "Box"
+b.Adornee = v.Character
+b.Parent = vHolder
+local t = NameTag:Clone()
+t.Name = v.Name .. "NameTag"
+t.Enabled = true
+t.Parent = vHolder
+t.Adornee = v.Character:WaitForChild("Head", 5)
+if not t.Adornee then
+    return UnloadCharacter(v)
+end
+t.Tag.Text = v.Name
+b.Color3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+t.Tag.TextColor3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+local Update
+local UpdateNameTag = function()
+    if not pcall(function()
+        v.Character.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+        local maxh = math.floor(v.Character.Humanoid.MaxHealth)
+        local h = math.floor(v.Character.Humanoid.Health)
+        t.Tag.Text = v.Name .. "\n" .. ((maxh ~= 0 and tostring(math.floor((h / maxh) * 100))) or "0") .. "%  " .. tostring(h) .. "/" .. tostring(maxh)
+    end) then
+        Update:Disconnect()
+    end
+end
+UpdateNameTag()
+Update = v.Character.Humanoid.Changed:Connect(UpdateNameTag)
+end
+
+local UnloadCharacter = function(v)
+local vHolder = Holder:FindFirstChild(v.Name)
+if vHolder and (vHolder:FindFirstChild(v.Name .. "Box") ~= nil or vHolder:FindFirstChild(v.Name .. "NameTag") ~= nil) then
+    vHolder:ClearAllChildren()
+end
+end
+
+local LoadPlayer = function(v)
+local vHolder = Instance.new("Folder", Holder)
+vHolder.Name = v.Name
+v.CharacterAdded:Connect(function()
+    pcall(LoadCharacter, v)
+end)
+v.CharacterRemoving:Connect(function()
+    pcall(UnloadCharacter, v)
+end)
+v.Changed:Connect(function(prop)
+    if prop == "TeamColor" then
+        UnloadCharacter(v)
+        wait()
+        LoadCharacter(v)
+    end
+end)
+LoadCharacter(v)
+end
+
+local UnloadPlayer = function(v)
+UnloadCharacter(v)
+local vHolder = Holder:FindFirstChild(v.Name)
+if vHolder then
+    vHolder:Destroy()
+end
+end
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+spawn(function() pcall(LoadPlayer, v) end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(function(v)
+pcall(LoadPlayer, v)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(v)
+pcall(UnloadPlayer, v)
+end)
+end)
+
+PL:Button("傳送點模擬器V1.5(Waypoint Simulator)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/SCTP/main/SCTP"))()
+end)
+PL:Button("地圖(Map)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/mappppppmap/main/CSmapXD"))()
+end)
+
+PL:Button("獲得物品(Get items)", function(state)
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "獲得物品";
+            Text = "By.企鵝";
+            Icon = "rbxthumb://type=Asset&id=10123421106&w=150&h=150"
+        })
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+        game.StarterGui:SetCore("SendNotification")
+           for i,v in pairs (game.Players:GetChildren()) do
+           wait()
+           for i,b in pairs (v.Backpack:GetChildren()) do
+           b.Parent = game.Players.LocalPlayer.Backpack
+           end
+           end
+        end)
+
+        PL:Button("重製人偶(Die)", function()
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "By.企鵝";
+            Text = "You Die:)";
+            Icon = "rbxthumb://type=Asset&id=6716166797&w=150&h=150"
+        })
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
+    end)
+    
+    PL:Button("純飛行(Fly Hack)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/justfly/main/justfly"))()
+    end)
+
+    PL:Button("炸服(Lag Server)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local hrp = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+    hrp.Parent = nil;
+    hrp:Clone()
+    hrp.Parent = game.Players.LocalPlayer.Character
+    hrp.Name = "Humanoid"
+    local char = game:GetService('Players').LocalPlayer.Character or nil
+    if char then
+    char.HumanoidRootPart.CFrame = CFrame.new(0,9e9,0)
+    task.wait(0.5)
+    char.HumanoidRootPart.Anchored = true
+    end
+    while wait(1.5) do --// don't change it's the best
+    game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
+    local function getmaxvalue(val)
+       local mainvalueifonetable = 499999
+       if type(val) ~= "number" then
+           return nil
+       end
+       local calculateperfectval = (mainvalueifonetable/(val+2))
+       return calculateperfectval
+    end
+     
+    local function bomb(tableincrease, tries)
+    local maintable = {}
+    local spammedtable = {}
+     
+    table.insert(spammedtable, {})
+    z = spammedtable[1]
+     
+    for i = 1, tableincrease do
+        local tableins = {}
+        table.insert(z, tableins)
+        z = tableins
+    end
+     
+    local calculatemax = getmaxvalue(tableincrease)
+    local maximum
+     
+    if calculatemax then
+         maximum = calculatemax
+         else
+         maximum = 999999
+    end
+     
+    for i = 1, maximum do
+         table.insert(maintable, spammedtable)
+    end
+     
+    for i = 1, tries do
+         game.RobloxReplicatedStorage.SetPlayerBlockList:FireServer(maintable)
+    end
+    end
+     
+    bomb(289, 5)
+    end
+end)
+
+
+
+TP = Library:Tab("King Legacy 傳送點")
+
+if game.PlaceId == 4520749081 then
+    First_Sea = true
+ elseif game.PlaceId == 6381829480 then
+    Second_Sea = true
+ end
+
+if First_Sea then
+
+TP:Seperator("[一海]--(First Sea)")
+
+TP:Button("初始島(Start Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-2162.26416015625, 48.32538604736328, -4474.15087890625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("副本(Raid)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(2498.797607421875, 103.69718170166016, -1931.5999755859375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("海盜島(Pirate Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-797.7662963867188, 39.6270751953125, -3366.8740234375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("鯊魚島(Shark Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-934.886962890625, 11.862927436828613, -1461.59375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("泡泡島(Bubble Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(1463.270263671875, 9.76036262512207, 577.9224243164062)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("空島(Sky Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4285.8203125, 199.99024963378906, 998.1646118164062)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("沙漠島(Desert Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-2952.294677734375, 63.91221237182617, -798.911865234375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("雪地(Snow Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-5391.56787109375, 19.904788970947266, -1445.02001953125)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("海上餐廳(Chef Ship)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4107.31689453125, 15.598604202270508, -3092.59814453125)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("火山地形(Soldier Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-2505.50732421875, 41.169410705566406, -2742.85400390625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("海軍總部(War Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    local teleport_table = {
+        location1 = Vector3.new(2369.466064453125, 50.870635986328125, -2108.858154296875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("殭屍島(Zombie Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-2566.66650390625, 26.466270446777344, 3779.87451171875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("動物島(Lobby Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-1225.4755859375, 13.11461353302002, 2151.736328125)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("漁人島(Fishland)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-1205.111328125, 7.3053297996521, 6193.66455078125)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("石頭建築(Rocks)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(2025.2515869140625, 424.83050537109375, -4927.349609375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("石頭廣場(Stone Arena)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(5405.39697265625, 37.74615478515625, -6593.59423828125)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("回到重生點(Starting Point)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("SpawnLocation").CFrame
+end)
+
+else
+
+TP:Seperator("[二海]--(Second Sea)")
+
+TP:Button("初始島(Floresco)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-3642.876953125, 57.334808349609375, 168.06414794921875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("副本(Raid)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4566.83251953125, 223.18226623535156, -81.80825805664062)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("抽果點(Gacha)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4781.9345703125, 57.33783721923828, 80.74989318847656)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("雪地(Hibernus Land)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4552.6416015625, 135.88351440429688, -877.1561279296875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("乾燥地形(Torrefacio)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-5225.466796875, 57.284793853759766, 790.3766479492188)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("綠油地形(Viridans)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-5137.27783203125, 57.3348388671875, 1864.67529296875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("監獄(Carcer)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4273.54150390625, 29.20548439025879, 1270.641357421875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("覺醒專家(Awakening Guy)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4427.34716796875, 81.4077377319336, 2132.9228515625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("凱多島(Skull)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-6512.7529296875, 57.752288818359375, 5868.0947265625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("凱多廣場(Skull)[UP]", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-5995.11376953125, 462.1614685058594, 7310.8681640625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("沙漠(Dead Tumdra)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(1191.8504638671875, 14.436646461486816, 907.827880859375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("蛋糕島(Loaf)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-498.50341796875, 31.404890060424805, 8110.5126953125)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("鏡子世界(Mirror dimension)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(30286.943359375, 65.45162963867188, 93151.1640625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("鏡子世界[頂端](Mirror dimension)[UP]", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(30286.056640625, 354.21044921875, 93276)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+TP:Button("冰火島(Hot and Cold)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-264.0167236328125, 87.46289825439453, -2649.3115234375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("骷髏島(Pirate Skull)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-9108.478515625, 20.512014389038086, -5037.1201171875)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("海軍總部(Soldier Headquater)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-9573.6337890625, 38.063194274902344, 966.8990478515625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+TP:Button("多佛朗明哥島(Fiore)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(4904.45556640625, 71.19904327392578, -2546.23974609375)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
+
+
+TP:Button("藤蔓島(Vine Island)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        local teleport_table = {
+            location1 = Vector3.new(9333.3125, 71.74064636230469, -4298.05224609375)
+        
+        }
+        
+        local tween_s = game:GetService('TweenService')
+        local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+        
+        local lp = game.Players.LocalPlayer
+        
+        function bypass_teleport(v)
+            if lp.Character and 
+            lp.Character:FindFirstChild('HumanoidRootPart') then
+                local cf = CFrame.new(v)
+                local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                a:Play()
+            end
+        end
+        
+        bypass_teleport(teleport_table.location1)
+end)
+
+
+TP:Button("回到重生點(Starting Point)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("SpawnLocation").CFrame
+end)
+end
+
+
+
+BOSSTP = Library:Tab("魔王TP")
+
+
+if First_Sea then
+
+BOSSTP:Seperator("魔王傳送點--(一海)[Boss TP -- First Sea]")
+BOSSTP:Button("獸人領主(Orc Lord)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Monster [Lv. 2500]")  then
+
+    plr.CFrame = game:GetService("ReplicatedStorage").MOB["Monster [Lv. 2500]"].HumanoidRootPart.CFrame * CFrame.new(0,500,0)
+    print("Replicated")
+elseif game:GetService("Workspace").Monster.Boss:FindFirstChild("Monster [Lv. 2500]") then
+    
+    plr.CFrame = game:GetService("Workspace").Monster.Boss["Monster [Lv. 2500]"].HumanoidRootPart.CFrame * CFrame.new(0,500,0)
+    print("Workspace")
+end
+end)
+
+BOSSTP:Button("紅髮(Expert Swordman)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+    if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Expert Swordman [Lv. 3000]")  then
+    
+        plr.CFrame = game:GetService("ReplicatedStorage").MOB["Expert Swordman [Lv. 3000]"].HumanoidRootPart.CFrame * CFrame.new(0,60,0)
+        print("Replicated")
+    elseif game:GetService("Workspace").Monster.Boss:FindFirstChild("Expert Swordman [Lv. 3000]") then
+        
+        plr.CFrame = game:GetService("Workspace").Monster.Boss["Expert Swordman [Lv. 3000]"].HumanoidRootPart.CFrame * CFrame.new(0,60,0)
+        print("Workspace")
+    end
+    end)
+
+    BOSSTP:Button("回到重生點(Starting Point)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("SpawnLocation").CFrame
+end)
+
+else
+
+    BOSSTP:Seperator("魔王傳送點--(二海)[Boss TP -- Second Sea]")
+
+BOSSTP:Button("大媽(Ms. Mother)", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Ms. Mother [Lv. 7500]") then
+
+    plr.CFrame = game:GetService("ReplicatedStorage").MOB["Ms. Mother [Lv. 7500]"].HumanoidRootPart.CFrame * CFrame.new(0,80,0)
+elseif game:GetService("Workspace").Monster.Boss:FindFirstChild("Ms. Mother [Lv. 7500]") then
+    
+    plr.CFrame = game:GetService("Workspace").Monster.Boss["Ms. Mother [Lv. 7500]"].HumanoidRootPart.CFrame * CFrame.new(0,100,0)
+end
+end)
+
+BOSSTP:Button("御田(King Samurai)", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("ReplicatedStorage").MOB:FindFirstChild("King Samurai [Lv. 3500]")  then
+
+    plr.CFrame = game:GetService("ReplicatedStorage").MOB["King Samurai [Lv. 3500]"].HumanoidRootPart.CFrame * CFrame.new(0,60,0)
+    print("Replicated")
+elseif game:GetService("Workspace").Monster.Boss:FindFirstChild("King Samurai [Lv. 3500]") then
+    
+    plr.CFrame = game:GetService("Workspace").Monster.Boss["King Samurai [Lv. 3500]"].HumanoidRootPart.CFrame * CFrame.new(0,60,0)
+    print("Workspace")
+end
+end)
+
+BOSSTP:Button("凱多(Kaido)", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Dragon [Lv. 5000]") then
+
+    plr.CFrame = game:GetService("ReplicatedStorage").MOB["Dragon [Lv. 5000]"].HumanoidRootPart.CFrame * CFrame.new(0,1000,0)
+    print("Replicated Storage")
+elseif game:GetService("Workspace").Monster.Boss:FindFirstChild("Dragon [Lv. 5000]") then
+
+    plr.CFrame = game:GetService("Workspace").Monster.Boss["Dragon [Lv. 5000]"].HumanoidRootPart.CFrame * CFrame.new(0,1000,0)
+    print("Workspace")
+end
+end)
+
+BOSSTP:Button("鬼船(Ghost Ship)", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
+plr.CFrame = game:GetService("Workspace").GhostMonster["Ghost Ship"].HumanoidRootPart.CFrame * CFrame.new(0,500,0)
+end
+end)
+
+BOSSTP:Button("海王&海德拉島(Sea King & Hydra Island)", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("Workspace").Island:FindFirstChild("Sea King Water") then
+    plr.CFrame = game:GetService("Workspace").Island["Sea King Water"].Main.CFrame * CFrame.new(0,1000,0)
+elseif game:GetService("Workspace").Island:FindFirstChild("Sea King Thunder") then
+   plr.CFrame = game:GetService("Workspace").Island["Sea King Thunder"].Main.CFrame * CFrame.new(0,1000,0)
+elseif game:GetService("Workspace").Island:FindFirstChild("Sea King Lava") then
+    plr.CFrame = game:GetService("Workspace").Island["Sea King Lava"].Main.CFrame * CFrame.new(0,1000,0)
+end
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+if game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") then
+   plr.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island1").ChestSpawner.CFrame * CFrame.new(0,0,-100)
+elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") then
+   plr.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island2").ChestSpawner.CFrame * CFrame.new(0,0,-100)
+elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") then
+   plr.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island3").ChestSpawner.CFrame * CFrame.new(0,0,-100)
+elseif game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
+   plr.CFrame = game:GetService("Workspace").Island:FindFirstChild("Legacy Island4").ChestSpawner.CFrame * CFrame.new(0,0,-100)
+end
+end)
+
+BOSSTP:Toggle("自動撿寶箱 鬼船(Auto Chest Ghost Ship)", nil, function(value)
+    _G.GrabGhostChest = value
+if value == false then
+        UnClip()
+    end
+end)
+
+
+    task.spawn(function()
+        while task.wait() do
+            if _G.GrabGhostChest then 
+            pcall(function()
+            local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+                 
+            if game:GetService("Workspace"):FindFirstChild("Chest1") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest1"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest2") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest2"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest3") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest3"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest4") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest4"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest5") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest5"].RootPart.CFrame
+            end
+        end)
+        end
+        end
+        end)
+
+            task.spawn(function()
+        while task.wait() do
+            if _G.GrabGhostChest then 
+            pcall(function()
+            local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+                 
+            if game:GetService("Workspace"):FindFirstChild("Chest1") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest1"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest2") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest2"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest3") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest3"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest4") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest4"].RootPart.CFrame
+            end
+            if game:GetService("Workspace"):FindFirstChild("Chest5") then
+                wait(0.3)
+                plr.CFrame = game:GetService("Workspace")["Chest5"].RootPart.CFrame
+            end
+        end)
+        end
+        end
+        end)
+
+BOSSTP:Button("回到重生點(Starting Point)", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("SpawnLocation").CFrame
+end)
+end
+
+
+Check = Library:Tab("魔王檢查")
+Check:Seperator("魔王檢查(Boss Checking)")
+
+if First_Sea then
+RedHair  =  Check:Label("")
+ function i1oepu()
+    if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Expert Swordman [Lv. 3000]") then
+                    RedHair:Set("紅髮(Expert Swordman) : 目前已刷新(Spawned) [⭕]")   
+            else
+                RedHair:Set("紅髮(Expert Swordman) : 目前尚未刷新(Not Spawn) [❌]")    
+            end
+            end
+
+     spawn(function()
+    while task.wait() do
+        pcall(function()
+            i1oepu()
+        end)
+    end
+     end)
+
+     Monster = Check:Label("")
+     function zwt1y2()
+        if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Monster [Lv. 2500]") then
+                Monster:Set("獸人領主(Monster) : 目前已生成(Spawned) [⭕]")   
+        else
+            Monster:Set("獸人領主(Monster) : 目前尚未生成(Not Spawn) [❌]")    
+        end
+        end
+    
+    spawn(function()
+    while task.wait() do
+    pcall(function()
+        zwt1y2()
+    end)
+    end
+    end)
+
+else
+
+    Check:Button("檢查海王血量(Sea King Health)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/cheack/main/heaafaeg"))();
+    local Notify = AkaliNotif.Notify;
+    
+    Notify({
+    Description = "海王血量(Sea King Health)";
+    Title = game:GetService("Workspace").SeaMonster.SeaKing.Humanoid.Health;
+    Duration = 5;
+    });
+ 
+ end)
+
+ Check:Button("檢查海德拉血量(Hydra Health)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/cheack/main/heaafaeg"))();
+    local Notify = AkaliNotif.Notify;
+    
+    Notify({
+    Description = "海德拉血量(Hydra Health)";
+    Title = game:GetService("Workspace").SeaMonster.HydraSeaKing.Humanoid.Health;
+    Duration = 5;
+    });
+ 
+ end)
+ 
+ Check:Button("檢查鬼船血量(Ghost Ship Health)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+ local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/cheack/main/heaafaeg"))();
+ local Notify = AkaliNotif.Notify;
+ 
+ Notify({
+ Description = "鬼船血量(Ghost Ship Health)";
+ Title = game:GetService("Workspace").GhostMonster["Ghost Ship"].Humanoid.Health;
+ Duration = 5;
+ });
+ end)
+
+Seaking = Check:Label("")
+         function iop()
+        if  game:GetService("Workspace").Island:FindFirstChild("Legacy Island1") or game:GetService("Workspace").Island:FindFirstChild("Legacy Island2") or game:GetService("Workspace").Island:FindFirstChild("Legacy Island3") or game:GetService("Workspace").Island:FindFirstChild("Legacy Island4") then
+          Seaking:Set("海王(Sea King) : 目前已刷新(Spawned) [⭕]")   
+            else
+                Seaking:Set("海王(Sea King) : 目前尚未刷新(Not Spawn) [❌]")    
+            end
+            end
+
+     spawn(function()
+    while task.wait() do
+        pcall(function()
+            iop()
+        end)
+    end
+     end)
+
+     HydraIsland = Check:Label("")
+     function iopuw()
+        if game:GetService("Workspace").Island:FindFirstChild("Sea King Thunder") or game:GetService("Workspace").Island:FindFirstChild("Sea King Lava") or game:GetService("Workspace").Island:FindFirstChild("Sea King Water") then
+          HydraIsland:Set("海德拉(Hydra) : 目前已刷新(Spawned) [⭕]")   
+            else
+                HydraIsland:Set("海德拉(Hydra) : 目前尚未刷新(Not Spawn) [❌]")    
+            end
+            end
+
+     spawn(function()
+    while task.wait() do
+        pcall(function()
+            iopuw()
+        end)
+    end
+     end)
+
+ GhostShip = Check:Label("")
+
+
+ function ty()
+    if game:GetService("Workspace").GhostMonster:FindFirstChild("Ghost Ship") then
+  GhostShip:Set("鬼船(Ghost Ship) : 目前已刷新(Spawned) [⭕]")   
+    else
+        GhostShip:Set("鬼船(Ghost Ship) : 目前尚未刷新(Not Spawn) [❌]")    
+    end
+    end
+
+spawn(function()
+while task.wait() do
+pcall(function()
+    ty()
+end)
+end
+end)
+
+
+     KingSamurai = Check:Label("")
+
+
+     function t1y()
+        if game:GetService("ReplicatedStorage").MOB:FindFirstChild("King Samurai [Lv. 3500]") then
+      KingSamurai:Set("御田(King Samurai) : 目前已刷新(Spawned) [⭕]")   
+        else
+            KingSamurai:Set("御田(King Samurai) : 目前尚未刷新(Not Spawn) [❌]")    
+        end
+        end
+
+ spawn(function()
+while task.wait() do
+    pcall(function()
+        t1y()
+    end)
+end
+ end)
+
+ Bigmom = Check:Label("")
+
+
+ function t1y1()
+    if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Ms. Mother [Lv. 7500]") then
+  Bigmom:Set("大媽(Ms. Mother) : 目前已刷新(Spawned) [⭕]")   
+    else
+        Bigmom:Set("大媽(Ms. Mother) : 目前尚未刷新(Not Spawn) [❌]")    
+    end
+    end
+
+spawn(function()
+while task.wait() do
+pcall(function()
+    t1y1()
+end)
+end
+end)
+
+Kaido = Check:Label("")
+         function t1y2()
+            if game:GetService("ReplicatedStorage").MOB:FindFirstChild("Dragon [Lv. 5000]") then
+                    Kaido:Set("凱多(Kaido) : 目前已生成(Spawned) [⭕]")   
+            else
+                Kaido:Set("凱多(Kaido) : 目前尚未生成(Not Spawn) [❌]")    
+            end
+            end
+
+     spawn(function()
+    while task.wait() do
+        pcall(function()
+            t1y2()
+        end)
+    end
+     end)
+
+
+    Check:Button("刷服(Server Hop)", function()
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
+            local ID = ""
+            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                foundAnything = Site.nextPageCursor
+            end
+            local num = 0;
+            for i,v in pairs(Site.data) do
+                local Possible = true
+                ID = tostring(v.id)
+                if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                    for _,Existing in pairs(AllIDs) do
+                        if num ~= 0 then
+                            if ID == tostring(Existing) then
+                                Possible = false
+                            end
+                        else
+                            if tonumber(actualHour) ~= tonumber(Existing) then
+                                local delFile = pcall(function()
+                                    -- delfile("NotSameServers.json")
+                                    AllIDs = {}
+                                    table.insert(AllIDs, actualHour)
+                                end)
+                            end
+                        end
+                        num = num + 1
+                    end
+                    if Possible == true then
+                        table.insert(AllIDs, ID)
+                        wait()
+                        pcall(function()
+                            wait()
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                        end)
+                        wait(4)
+                    end
+                end
+            end
+        end
+
+        function Teleport()
+            while wait() do
+                pcall(function()
+                    TPReturner()
+                    if foundAnything ~= "" then
+                        TPReturner()
+                    end
+                end)
+            end
+        end
+
+        Teleport()
+ end)
+end
+
+
+
+    stats = Library:Tab("點數")
+    stats:Seperator("點數(Stats)")
+
+
+stats:Toggle("血量(Defense)",_G.AutoDefense,function(value)
+    _G.AutoDefense = value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.AutoDefense then
+            if game:GetService("Players")["LocalPlayer"].PlayerStats.Points.Value ~= 0 then
+                pcall(function()
+                    game:GetService("Players").LocalPlayer.PlayerGui.Stats.Button.StatsFrame.RemoteEvent:FireServer("Defense",PointStats)
+                end)
+            end
+        end
+    end
+end)
+
+stats:Toggle("拳頭(Melee)",_G.AutoMelee,function(value)
+    _G.AutoMelee = value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.AutoMelee then
+            if game:GetService("Players")["LocalPlayer"].PlayerStats.Points.Value ~= 0 then
+                pcall(function()
+                    game:GetService("Players").LocalPlayer.PlayerGui.Stats.Button.StatsFrame.RemoteEvent:FireServer("Melee",PointStats)
+                end)
+            end
+        end
+    end
+end)
+
+stats:Toggle("刀(Sword)",_G.AutoSword,function(value)
+    _G.AutoSword = value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.AutoSword then
+            if game:GetService("Players")["LocalPlayer"].PlayerStats.Points.Value ~= 0 then
+                pcall(function()
+                    game:GetService("Players").LocalPlayer.PlayerGui.Stats.Button.StatsFrame.RemoteEvent:FireServer("Sword",PointStats)
+                end)
+            end
+        end
+    end
+end)
+
+stats:Toggle("果實(Devil Fruit)",_G.AutoDevilFruit,function(value)
+    _G.AutoDevilFruit = value
+end)
+
+spawn(function()
+    while wait() do
+        if _G.AutoDevilFruit then
+            if game:GetService("Players")["LocalPlayer"].PlayerStats.Points.Value ~= 0 then
+                pcall(function()
+                    game:GetService("Players").LocalPlayer.PlayerGui.Stats.Button.StatsFrame.RemoteEvent:FireServer("Devil Fruit",PointStats)
+                end)
+            end
+        end
+    end
+end)
+
+
+stats:Label("點數(Stats)")
+
+PointStats = 1
+stats:Slider("選擇增加點數數量(Add points quantity)",1,100,1,function(value)
+    PointStats = value
+end)
+
+
+
+
+
+
+
+
+
+
+
+LOL = Library:Tab("娛樂功能")
+LOL:Seperator("娛樂功能")
+
+
+LOL:Button("指令程式(Infinite Yield)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+
+LOL:Button("飛簷走壁(Walking on the Wall)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/bagabaga852/walkwall/main/walkwall'))()
+end)
+
+LOL:Button("浮板(Kickboard)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/bagabaga852/fuban/main/mybaba'))()
+end)
+
+LOL:Button("隱藏/現身(Hide/Reveal)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/bagabaga852/hideseek/main/funnnnnnn'))()
+end)
+
+LOL:Button("詭異的行走(Weird Walking)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local CoreGui = game:GetService("StarterGui")
+
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title = "歡迎使用";
+        Text = "By.企鵝";
+        Icon = "rbxthumb://type=Asset&id=5082444247&w=150&h=150"
+    })
+    
+
+local lp = game:GetService "Players".LocalPlayer
+if lp.Character:FindFirstChild "Head" then
+local char = lp.Character
+char.Archivable = true
+local new = char:Clone()
+new.Parent = workspace
+lp.Character = new
+wait(2)
+local oldhum = char:FindFirstChildWhichIsA "Humanoid"
+local newhum = oldhum:Clone()
+newhum.Parent = char
+newhum.RequiresNeck = false
+oldhum.Parent = nil
+wait(2)
+lp.Character = char
+new:Destroy()
+wait(1)
+newhum:GetPropertyChangedSignal("Health"):Connect(
+    function()
+        if newhum.Health <= 0 then
+            oldhum.Parent = lp.Character
+            wait(1)
+            oldhum:Destroy()
+        end
+    end)
+workspace.CurrentCamera.CameraSubject = char
+if char:FindFirstChild "Animate" then
+    char.Animate.Disabled = true
+    wait(.1)
+    char.Animate.Disabled = false
+end
+lp.Character:FindFirstChild "Head":Destroy()
+end
+wait(1)
+game.Players.LocalPlayer.Character.UpperTorso:BreakJoints()
+end)
+
+LOL:Button("望遠鏡(Telescope)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/bagabaga852/viewwwwwwww/main/thebigbig'))()
+end)
+
+LOL:Button("長腳(longerrrleg)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+            local Character = game.Players.LocalPlayer.Character
+
+local Hum = {
+"BodyTypeScale",
+"BodyProportionScale",
+"BodyWidthScale",
+"BodyHeightScale",
+"BodyDepthScale",
+"HeadScale"
+}
+
+function Remove()
+repeat task.wait() until Character.LeftFoot:FindFirstChild("OriginalSize")
+Character.LeftFoot.OriginalSize:Destroy()
+Character.LeftLowerLeg.OriginalSize:Destroy()
+Character.LeftUpperLeg.OriginalSize:Destroy()
+end
+
+Character.LeftLowerLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+Character.LeftUpperLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+Character.LeftLowerLeg.LeftKneeRigAttachment:Destroy()
+Character.LeftUpperLeg.LeftKneeRigAttachment:Destroy()
+
+for i=1,6 do
+Remove()
+Character.Humanoid[Hum[i]]:Destroy()
+end
+end)
+
+LOL:Button("F3X", function()
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://9125530803"
+Sound:Play()
+loadstring(game:GetObjects("rbxassetid://4698064966")[1].Source)()
+end)
+
+LOL:Button("Disco Fog", function()
+basics = {Color3.new(255/255,0/255,0/255),Color3.new(255/255,85/255,0/255),Color3.new(218/255,218/255,0/255),Color3.new(0/255,190/255,0/255),Color3.new(0/255,85/255,255/255),Color3.new(0/255,0/255,127/255),Color3.new(170/255,0/255,255/255),Color3.new(0/255,204/255,204/255),Color3.new(255/255,85/255,127/255),Color3.new(0/255,0/255,0/255),Color3.new(255/255,255/255,255/255)}
+game.Lighting.FogStart = 25
+game.Lighting.FogEnd = 300
+while true do
+wait(0.5)
+game.Lighting.FogColor = basics[math.random(1,#basics)]
+end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+Act = Library:Tab("動畫包")
+Act:Seperator("動畫包")
+
+Act:Button("角色動畫(Character Action)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    game:GetService("StarterGui"):SetCore("SendNotification",{
+        Title = "角色動畫";
+        Text = "腳本By.企鵝";
+        Icon = "rbxthumb://type=Asset&id=6662863813&w=150&h=150"
+    })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/LOLanimation/main/happymaker"))()
+end)
+
+
+
+
+
+
+
+
+
+
+    RTX = Library:Tab("光影")
+    RTX:Seperator("光影")
+    
+    RTX:Button("光影(RTX)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/RTXRTX/main/lighRttttXXXX"))()
+    end)
+
+
+
+    setting = Library:Tab("設定")
+    setting:Seperator("設定(Setting)")
+
+    setting:Button("刷服(Server Hop)", function()
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
+            local ID = ""
+            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                foundAnything = Site.nextPageCursor
+            end
+            local num = 0;
+            for i,v in pairs(Site.data) do
+                local Possible = true
+                ID = tostring(v.id)
+                if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                    for _,Existing in pairs(AllIDs) do
+                        if num ~= 0 then
+                            if ID == tostring(Existing) then
+                                Possible = false
+                            end
+                        else
+                            if tonumber(actualHour) ~= tonumber(Existing) then
+                                local delFile = pcall(function()
+                                    -- delfile("NotSameServers.json")
+                                    AllIDs = {}
+                                    table.insert(AllIDs, actualHour)
+                                end)
+                            end
+                        end
+                        num = num + 1
+                    end
+                    if Possible == true then
+                        table.insert(AllIDs, ID)
+                        wait()
+                        pcall(function()
+                            wait()
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                        end)
+                        wait(4)
+                    end
+                end
+            end
+        end
+
+        function Teleport()
+            while wait() do
+                pcall(function()
+                    TPReturner()
+                    if foundAnything ~= "" then
+                        TPReturner()
+                    end
+                end)
+            end
+        end
+
+        Teleport()
+ end)
+
+
+    setting:Line()
+ setting:Button("關閉(殺死)腳本Close(Kill)Script", function()
+     DarkraiX:ToggleUi()
+ end)
+
+    setting:Button("重新進入遊戲 (ReJoin)", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+    end)
+
+    
+
+
+
+
+
+
+
+
+
+
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9039481963"
+    Sound:Play()
+
+
+
+
+            local ScreenGui = Instance.new("ScreenGui")
+            local Frame = Instance.new("ImageLabel")
+            local TextLabel = Instance.new("TextLabel")
+            
+            ScreenGui.Parent = game:GetService("CoreGui")
+            TextLabel.Parent = ScreenGui
+            TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 78)
+            TextLabel.BackgroundTransparency = 1
+            TextLabel.Position = UDim2.new(0.470000000, 0, -0.05000000, 0)
+            TextLabel.Size = UDim2.new(0, 150, 0, 70)
+            TextLabel.Font = Enum.Font.Gotham
+            TextLabel.Text = "腳本By.企鵝V37.1"
+            TextLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
+            TextLabel.TextSize = 50.000
+            TextLabel.TextStrokeTransparency = 0.000
+            wait(10)
+            ScreenGui:Destroy()
+            end
+            end)
+            
+
+
+
+            Enterkey.MouseButton1Down:Connect(function()
+                if Enterkeyhere.Text == "SP=0" then
+                    Penguinmain.Visible = false
+                    ScreenGui:Destroy()
+
+
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/Locationsubcher/main/Locationez"))()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1835322613"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1835322613"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1835322613"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1835322613"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1835322613"
+        Sound:Play()
+                end
+            end)
+            
+
+            
+            
+            
+            
+            
+            
+            
+            Enterkeyhere.Name = "Enterkeyhere"--Imput = Enterkeyhere
+            Enterkeyhere.Parent = Penguinmain
+            Enterkeyhere.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+            Enterkeyhere.Position = UDim2.new(0.0145631069, 0, 0.355000000, 0)
+            Enterkeyhere.Size = UDim2.new(0, 200, 0, 70)
+            Enterkeyhere.Font = Enum.Font.GothamBold
+            Enterkeyhere.Text = "在此輸入密鑰"
+            Enterkeyhere.TextScaled = true
+            Enterkeyhere.TextWrapped = true
+            Enterkeyhere.TextColor3 = Color3.fromRGB(255, 255, 255)
+            Enterkeyhere.TextSize = 20.000
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://1836973854"
+            Sound:Play()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://1836973854"
+        Sound:Play()
