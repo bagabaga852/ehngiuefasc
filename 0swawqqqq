@@ -59,7 +59,7 @@ local TextLabel = Instance.new("TextLabel")
     
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "歡迎使用";
-    Text = "企鵝外掛腳本\nV38版本";
+    Text = "企鵝外掛腳本\nV38.1版本";
     Icon = "rbxthumb://type=Asset&id=5082444247&w=150&h=150"
 })
 game:GetService("StarterGui"):SetCore("SendNotification",{
@@ -92,7 +92,7 @@ txte.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 txte.Position = UDim2.new(0.0145631069, 0, 0.020000000, 0)
 txte.Size = UDim2.new(0, 200, 0, 62)
 txte.Font = Enum.Font.GothamBold
-txte.Text = "腳本By.企鵝 V38"
+txte.Text = "腳本By.企鵝 V38.1"
 txte.TextWrapped = true
 txte.TextScaled = true
 txte.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -109,7 +109,7 @@ Enterkey.TextWrapped = true
 Enterkey.TextColor3 = Color3.fromRGB(255, 255, 255)
 Enterkey.TextSize = 45.000
 Enterkey.MouseButton1Down:Connect(function()
-    if Enterkeyhere.Text == "WASD" then
+    if Enterkeyhere.Text == "YKXE" then
         Penguinmain.Visible = false
 ScreenGui:Destroy()
 
@@ -130,7 +130,7 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 
 
 Notification:Notify(
-    {Title = "腳本開啟成功..", Description = "歡迎使用企鵝外掛腳本 V38"},
+    {Title = "腳本開啟成功..", Description = "歡迎使用企鵝外掛腳本 V38.1"},
     {OutlineColor = Color3.fromRGB(76, 0, 130),Time = 2, Type = "default"}
 )
 
@@ -141,9 +141,9 @@ local Library = DarkraiX:Window("企鵝腳本外掛","","",Enum.KeyCode.LeftAlt)
 
 Main = Library:Tab("腳本說明")
 
-Main:Seperator("企鵝 Roblox 腳本外掛 x King Legacy [V38]")
+Main:Seperator("企鵝 Roblox 腳本外掛 x King Legacy [V38.1]")
 
-Main:Label("Key=WASD")
+Main:Label("Key=YKXE")
 Main:Label("此腳本會持續更新")
 Main:Label("腳本更新日期:2023/06/06")
 Main:Label("腳本Made By.企鵝")
@@ -210,6 +210,12 @@ OPSC:Seperator("更新內容")
 OPSC:Button("版本 38 更新", function()
 end)
 OPSC:Button("修復腳本在King Legacy中許多功能無法顯示的問題", function()
+end)
+OPSC:Button("版本 38.1 更新", function()
+end)
+OPSC:Button("修復版本顯示錯誤", function()
+end)
+OPSC:Button("新增多佛朗明哥島房子(Fiore House)", function()
 end)
 
 
@@ -2525,6 +2531,31 @@ TP:Button("多佛朗明哥島(Fiore)", function()
     bypass_teleport(teleport_table.location1)
 end)
 
+TP:Button("多佛朗明哥島房子(Fiore House)", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(6602.47509765625, 419.1206359863281, -3123.086181640625)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+end)
 
 TP:Button("藤蔓島(Vine Island)", function()
     local Sound = Instance.new("Sound",game:GetService("SoundService"))
@@ -3454,7 +3485,7 @@ end)
             TextLabel.Position = UDim2.new(0.470000000, 0, -0.05000000, 0)
             TextLabel.Size = UDim2.new(0, 150, 0, 70)
             TextLabel.Font = Enum.Font.Gotham
-            TextLabel.Text = "腳本By.企鵝V37.1"
+            TextLabel.Text = "腳本By.企鵝.1"
             TextLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
             TextLabel.TextSize = 50.000
             TextLabel.TextStrokeTransparency = 0.000
