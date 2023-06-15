@@ -59,7 +59,7 @@ local TextLabel = Instance.new("TextLabel")
     
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "歡迎使用";
-    Text = "企鵝外掛腳本\nV38.1版本";
+    Text = "企鵝外掛腳本\nV39版本";
     Icon = "rbxthumb://type=Asset&id=5082444247&w=150&h=150"
 })
 game:GetService("StarterGui"):SetCore("SendNotification",{
@@ -92,7 +92,7 @@ txte.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 txte.Position = UDim2.new(0.0145631069, 0, 0.020000000, 0)
 txte.Size = UDim2.new(0, 200, 0, 62)
 txte.Font = Enum.Font.GothamBold
-txte.Text = "腳本By.企鵝 V38.1"
+txte.Text = "腳本By.企鵝 V39"
 txte.TextWrapped = true
 txte.TextScaled = true
 txte.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -109,7 +109,7 @@ Enterkey.TextWrapped = true
 Enterkey.TextColor3 = Color3.fromRGB(255, 255, 255)
 Enterkey.TextSize = 45.000
 Enterkey.MouseButton1Down:Connect(function()
-    if Enterkeyhere.Text == "YKXE" then
+    if Enterkeyhere.Text == "DEOP" then
         Penguinmain.Visible = false
 ScreenGui:Destroy()
 
@@ -130,7 +130,7 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 
 
 Notification:Notify(
-    {Title = "腳本開啟成功..", Description = "歡迎使用企鵝外掛腳本 V38.1"},
+    {Title = "腳本開啟成功..", Description = "歡迎使用企鵝外掛腳本 V39"},
     {OutlineColor = Color3.fromRGB(76, 0, 130),Time = 2, Type = "default"}
 )
 
@@ -141,11 +141,11 @@ local Library = DarkraiX:Window("企鵝腳本外掛","","",Enum.KeyCode.LeftAlt)
 
 Main = Library:Tab("腳本說明")
 
-Main:Seperator("企鵝 Roblox 腳本外掛 x King Legacy [V38.1]")
+Main:Seperator("企鵝 Roblox 腳本外掛 x King Legacy [V39]")
 
 Main:Label("Key=YKXE")
 Main:Label("此腳本會持續更新")
-Main:Label("腳本更新日期:2023/06/06")
+Main:Label("腳本更新日期:2023/06/15")
 Main:Label("腳本Made By.企鵝")
 Main:Button("Play Sound", function()
     local Sound = Instance.new("Sound",game:GetService("SoundService"))
@@ -207,15 +207,9 @@ end)
 
 OPSC:Seperator("更新內容")
 
-OPSC:Button("版本 38 更新", function()
+OPSC:Button("版本 39 更新", function()
 end)
-OPSC:Button("修復腳本在King Legacy中許多功能無法顯示的問題", function()
-end)
-OPSC:Button("版本 38.1 更新", function()
-end)
-OPSC:Button("修復版本顯示錯誤", function()
-end)
-OPSC:Button("新增多佛朗明哥島房子(Fiore House)", function()
+OPSC:Button("新增 KL的每日任務腳本(Battle Pass)", function()
 end)
 
 
@@ -376,6 +370,421 @@ PL:Toggle("視野清晰(No Fog)", "視野清晰No Fog", function(state)
 
 
     PL:Seperator("模式(按鈕)")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    PL:Button("KL的每日任務腳本(Battle Pass)",function()
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bagabaga852/pgtheme/main/theme"))()
+    local Window = Library.CreateLib("每日任務腳本 - [UPDATE 4.66] King Legacy", "DarkTheme")
+    
+    local Acc = Window:NewTab("公告 or 說明")
+    local AccSection = Acc:NewSection("此腳本並不具備自動打擊,拾取的功能")
+    local AccSection = Acc:NewSection("此腳本是簡易製作 並不具備多項功能")
+    local AccSection = Acc:NewSection("目前只製作二海專屬的版本")
+    local AccSection = Acc:NewSection("更新時間:2023/06/08")
+
+    local Main = Window:NewTab("每日任務區(二海)")
+
+
+    local MainSection = Main:NewSection("Joey每日任務")
+	MainSection:NewButton("Joey每日任務接應點", "", function()
+    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+    Sound.SoundId = "rbxassetid://9125530803"
+    Sound:Play()
+    local teleport_table = {
+        location1 = Vector3.new(-4802.28125, 57.62363052368164, 74.0373764038086)
+    
+    }
+    
+    local tween_s = game:GetService('TweenService')
+    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+    
+    local lp = game.Players.LocalPlayer
+    
+    function bypass_teleport(v)
+        if lp.Character and 
+        lp.Character:FindFirstChild('HumanoidRootPart') then
+            local cf = CFrame.new(v)
+            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+            a:Play()
+        end
+    end
+    
+    bypass_teleport(teleport_table.location1)
+	end)
+
+
+
+    MainSection:NewButton("Joey", "", function()
+        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+        Sound.SoundId = "rbxassetid://9125530803"
+        Sound:Play()
+        local teleport_table = {
+            location1 = Vector3.new(-5162.87158203125, 57.33899688720703, 2031.910400390625)
+        
+        }
+        
+        local tween_s = game:GetService('TweenService')
+        local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+        
+        local lp = game.Players.LocalPlayer
+        
+        function bypass_teleport(v)
+            if lp.Character and 
+            lp.Character:FindFirstChild('HumanoidRootPart') then
+                local cf = CFrame.new(v)
+                local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                a:Play()
+            end
+        end
+        
+        bypass_teleport(teleport_table.location1)
+        end)
+
+        local MainSection = Main:NewSection("拿懸賞單每日任務")
+        MainSection:NewButton("拿懸賞單每日任務接應點", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(-4754.6630859375, 57.33482360839844, 181.7288360595703)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+
+            MainSection:NewButton("懸賞單1", "", function()
+                local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                Sound.SoundId = "rbxassetid://9125530803"
+                Sound:Play()
+                local teleport_table = {
+                    location1 = Vector3.new(-3885.3935546875, 61.20293045043945, 205.4344940185547)
+                
+                }
+                
+                local tween_s = game:GetService('TweenService')
+                local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+                
+                local lp = game.Players.LocalPlayer
+                
+                function bypass_teleport(v)
+                    if lp.Character and 
+                    lp.Character:FindFirstChild('HumanoidRootPart') then
+                        local cf = CFrame.new(v)
+                        local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                        a:Play()
+                    end
+                end
+                
+                bypass_teleport(teleport_table.location1)
+                end)
+
+                MainSection:NewButton("懸賞單2", "", function()
+                    local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                    Sound.SoundId = "rbxassetid://9125530803"
+                    Sound:Play()
+                    local teleport_table = {
+                        location1 = Vector3.new(-3827.471923828125, 57.28479766845703, 92.42622375488281)
+                    
+                    }
+                    
+                    local tween_s = game:GetService('TweenService')
+                    local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+                    
+                    local lp = game.Players.LocalPlayer
+                    
+                    function bypass_teleport(v)
+                        if lp.Character and 
+                        lp.Character:FindFirstChild('HumanoidRootPart') then
+                            local cf = CFrame.new(v)
+                            local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                            a:Play()
+                        end
+                    end
+                    
+                    bypass_teleport(teleport_table.location1)
+                    end)
+
+                    MainSection:NewButton("懸賞單3", "", function()
+                        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                        Sound.SoundId = "rbxassetid://9125530803"
+                        Sound:Play()
+                        local teleport_table = {
+                            location1 = Vector3.new(-3715.120849609375, 57.28479766845703, 209.5698699951172)
+                        
+                        }
+                        
+                        local tween_s = game:GetService('TweenService')
+                        local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+                        
+                        local lp = game.Players.LocalPlayer
+                        
+                        function bypass_teleport(v)
+                            if lp.Character and 
+                            lp.Character:FindFirstChild('HumanoidRootPart') then
+                                local cf = CFrame.new(v)
+                                local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                                a:Play()
+                            end
+                        end
+                        
+                        bypass_teleport(teleport_table.location1)
+                        end)
+
+                        local MainSection = Main:NewSection("搬箱子每日任務")
+        MainSection:NewButton("搬箱子每日任務接應點", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(-3674.500732421875, 59.739112854003906, 223.5304718017578)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+
+            MainSection:NewButton("箱子接應點", "", function()
+                local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                Sound.SoundId = "rbxassetid://9125530803"
+                Sound:Play()
+                local teleport_table = {
+                    location1 = Vector3.new(-604.95556640625, 44.734642028808594, -2117.637451171875)
+                
+                }
+                
+                local tween_s = game:GetService('TweenService')
+                local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+                
+                local lp = game.Players.LocalPlayer
+                
+                function bypass_teleport(v)
+                    if lp.Character and 
+                    lp.Character:FindFirstChild('HumanoidRootPart') then
+                        local cf = CFrame.new(v)
+                        local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                        a:Play()
+                    end
+                end
+                
+                bypass_teleport(teleport_table.location1)
+                end)
+
+                local MainSection = Main:NewSection("找羽毛每日任務")
+        MainSection:NewButton("找羽毛每日任務接應點", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(6360.3095703125, 419.2045593261719, -3012.2783203125)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+            MainSection:NewButton("羽毛1", "", function()
+                local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                Sound.SoundId = "rbxassetid://9125530803"
+                Sound:Play()
+                game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame = CFrame.new(6349.0029296875, 566.0940551757812, -3152.800537109375)
+            end)
+                    MainSection:NewButton("羽毛2", "", function()
+                        local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                        Sound.SoundId = "rbxassetid://9125530803"
+                        Sound:Play()
+                        game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame = CFrame.new(6414.931640625, 492.3605651855469, -3346.871337890625)
+                    end)
+
+                        MainSection:NewButton("羽毛3", "", function()
+                            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+                            Sound.SoundId = "rbxassetid://9125530803"
+                            Sound:Play()
+                            game.Players.LocalPlayer.Character.Humanoid.RootPart.CFrame = CFrame.new(6348.94384765625, 539.9098510742188, -3378.171630859375)
+                        end)
+
+                            local MainSection = Main:NewSection("找書每日任務")
+        MainSection:NewButton("找書每日任務接應點", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(6651.65966796875, 419.1624450683594, -3165.42578125)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+        MainSection:NewButton("書", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(8156.14013671875, 71.64382934570312, -4793.099609375)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+
+            local MainSection = Main:NewSection("擊敗Hefty每日任務")
+        MainSection:NewButton("擊敗Hefty每日任務接應點", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(-9689.1826171875, 37.84440994262695, 914.0426025390625)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+        MainSection:NewButton("Hefty", "", function()
+            local Sound = Instance.new("Sound",game:GetService("SoundService"))
+            Sound.SoundId = "rbxassetid://9125530803"
+            Sound:Play()
+            local teleport_table = {
+                location1 = Vector3.new(-10699.5703125, 83.27745819091797, 972.6526489257812)
+            
+            }
+            
+            local tween_s = game:GetService('TweenService')
+            local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+            
+            local lp = game.Players.LocalPlayer
+            
+            function bypass_teleport(v)
+                if lp.Character and 
+                lp.Character:FindFirstChild('HumanoidRootPart') then
+                    local cf = CFrame.new(v)
+                    local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                    a:Play()
+                end
+            end
+            
+            bypass_teleport(teleport_table.location1)
+            end)
+        end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     PL:Button("獲得指南針(Get Free Legacy Pose)",function()
         local Sound = Instance.new("Sound",game:GetService("SoundService"))
@@ -3485,7 +3894,7 @@ end)
             TextLabel.Position = UDim2.new(0.470000000, 0, -0.05000000, 0)
             TextLabel.Size = UDim2.new(0, 150, 0, 70)
             TextLabel.Font = Enum.Font.Gotham
-            TextLabel.Text = "腳本By.企鵝.1"
+            TextLabel.Text = "腳本By.企鵝V39"
             TextLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
             TextLabel.TextSize = 50.000
             TextLabel.TextStrokeTransparency = 0.000
